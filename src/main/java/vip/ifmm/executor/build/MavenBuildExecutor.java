@@ -41,4 +41,11 @@ public class MavenBuildExecutor implements BuildExecutor {
             return false;
         }
     }
+
+    @Override
+    public boolean deployProject() {
+        // TODO 部署项目到指定位置
+
+        return false;
+    }
 }

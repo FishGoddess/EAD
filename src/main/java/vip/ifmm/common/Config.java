@@ -51,4 +51,10 @@ public class Config {
 
     // MAVEN 命令位置
     public static final String MVN_COMMAND = getValueSafely("mvn_command", "mvn");
+
+    // 项目部署位置
+    public static final String DEPLOY_LOCATION = getValueSafely("deploy_location", "");
+
+    // 项目部署名称
+    public static final String DEPLOY_NAME = getValueSafely("deploy_name", "");
 }

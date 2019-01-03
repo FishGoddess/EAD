@@ -11,4 +11,7 @@ public interface BuildExecutor {
 
     // 打包项目为 war 文件和文件夹
     boolean packageProject();
+
+    // 将项目部署到指定文件夹
+    boolean deployProject();
 }
