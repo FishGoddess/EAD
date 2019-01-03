@@ -12,16 +12,16 @@ import java.io.IOException;
 public class DefaultStreamHandler implements StreamHandler {
 
     // 是否终止程序
-    private volatile boolean isExited = false;
+    private volatile boolean exited = false;
 
     @Override
     public void close() {
-        isExited = true;
+        exited = true;
     }
 
     @Override
     public boolean keepGoing() {
-        return !isExited;
+        return !exited;
     }
 
     @Override
