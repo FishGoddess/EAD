@@ -3,6 +3,7 @@ package vip.ifmm.executor.vcs;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import vip.ifmm.common.Config;
+import vip.ifmm.executor.ProcessExecutor;
 import vip.ifmm.handler.DefaultStreamHandler;
 import vip.ifmm.handler.StreamHandlerWrapper;
 
@@ -25,21 +26,18 @@ public class GitVCSExecutor implements VCSExecutor {
     @Override
     public boolean cloneProject() {
         try {
-            Process p = Runtime.getRuntime().exec(new String[]{Config.GIT_COMMAND, "clone", Config.CLONE_URL, Config.CLONE_LOCATION});
+            // 执行 git clone 命令
+            ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
+                    Config.GIT_COMMAND,
+                    "clone",
+                    Config.CLONE_URL,
+                    Config.CLONE_LOCATION
+            }));
 
-            // 处理程序数据
-            StreamHandlerWrapper streamHandlerWrapper = new StreamHandlerWrapper(new DefaultStreamHandler());
-            new Thread(() -> streamHandlerWrapper.handleInput(p.getInputStream())).start(); // 为了让下面的代码进行下去
-            new Thread(() -> streamHandlerWrapper.handleInput(p.getErrorStream())).start(); // 为了让下面的代码进行下去
-
-            p.waitFor();
-            p.destroy();
-
-            // 关闭流处理器资源
-            streamHandlerWrapper.finish();
             return true;
         } catch (IOException | InterruptedException e) {
             log.error("clone 失败！url: [" + Config.CLONE_URL + "]", e);
+
             return false;
         }
     }
@@ -47,21 +45,16 @@ public class GitVCSExecutor implements VCSExecutor {
     @Override
     public boolean updateProject() {
         try {
-            Process p = Runtime.getRuntime().exec(new String[]{Config.GIT_COMMAND, "pull"}, null, new File(Config.CLONE_LOCATION));
+            // 执行 git pull 命令
+            ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
+                    Config.GIT_COMMAND,
+                    "pull"
+            }, null, new File(Config.CLONE_LOCATION)));
 
-            // 处理程序数据
-            StreamHandlerWrapper streamHandlerWrapper = new StreamHandlerWrapper(new DefaultStreamHandler());
-            new Thread(() -> streamHandlerWrapper.handleInput(p.getInputStream())).start(); // 为了让下面的代码进行下去
-            new Thread(() -> streamHandlerWrapper.handleInput(p.getErrorStream())).start(); // 为了让下面的代码进行下去
-
-            p.waitFor();
-            p.destroy();
-
-            // 关闭流处理器资源
-            streamHandlerWrapper.finish();
             return true;
         } catch (IOException | InterruptedException e) {
             log.error("pull 失败！url: [" + Config.CLONE_URL + "]", e);
+
             return false;
         }
     }

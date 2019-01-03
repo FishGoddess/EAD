@@ -1,5 +1,6 @@
 package vip.ifmm;
 
+import vip.ifmm.executor.build.MavenBuildExecutor;
 import vip.ifmm.executor.vcs.GitVCSExecutor;
 
 /**
@@ -12,7 +13,11 @@ import vip.ifmm.executor.vcs.GitVCSExecutor;
 public class Main {
 
     public static void main(String[] args) {
-        GitVCSExecutor git = new GitVCSExecutor();
-        git.updateProject();
+        //GitVCSExecutor git = new GitVCSExecutor();
+        //git.cloneProject();
+        //git.updateProject();
+
+        MavenBuildExecutor mvn = new MavenBuildExecutor();
+        mvn.packageProject();
     }
 }
