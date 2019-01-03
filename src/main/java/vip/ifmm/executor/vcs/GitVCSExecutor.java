@@ -21,7 +21,7 @@ public class GitVCSExecutor implements VCSExecutor {
     @Override
     public void cloneProject() {
         try {
-            Process p = Runtime.getRuntime().exec(new String[]{"git", "clone", Config.CLONE_URL, Config.CLONE_LOCATION});
+            Process p = Runtime.getRuntime().exec(new String[]{Config.GIT_COMMAND, "clone", Config.CLONE_URL, Config.CLONE_LOCATION});
 
             // 处理程序数据
             StreamHandlerWrapper streamHandlerWrapper = new StreamHandlerWrapper(new DefaultStreamHandler());
@@ -39,7 +39,7 @@ public class GitVCSExecutor implements VCSExecutor {
     }
 
     @Override
-    public void pull() {
+    public void updateProject() {
 
     }
 }

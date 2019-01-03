@@ -13,5 +13,5 @@ public interface VCSExecutor {
     void cloneProject();
 
     // 从当前分支更新项目
-    void pull();
+    void updateProject();
 }
