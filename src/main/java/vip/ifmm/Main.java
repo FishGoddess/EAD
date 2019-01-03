@@ -13,6 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
         GitVCSExecutor git = new GitVCSExecutor();
-        git.cloneProject();
+        git.updateProject();
     }
 }

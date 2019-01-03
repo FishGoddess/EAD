@@ -10,8 +10,8 @@ package vip.ifmm.executor.vcs;
 public interface VCSExecutor {
 
     // 从远程仓库克隆项目
-    void cloneProject();
+    boolean cloneProject();
 
     // 从当前分支更新项目
-    void updateProject();
+    boolean updateProject();
 }
