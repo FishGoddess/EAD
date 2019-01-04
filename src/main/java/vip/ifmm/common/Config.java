@@ -57,4 +57,7 @@ public class Config {
 
     // 项目部署名称
     public static final String DEPLOY_NAME = getValueSafely("deploy_name", "");
+
+    // 部署实现类名称
+    public static final String DEPLOY_EXECUTOR_CLASS = getValueSafely("deploy_executor_class", "vip.ifmm.executor.deploy.UnixDeployExecutor");
 }
