@@ -28,7 +28,7 @@ public class GitVCSExecutor implements VCSExecutor {
         try {
             // 执行 git clone 命令
             ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
-                    Config.GIT_COMMAND,
+                    Config.VCS_COMMAND,
                     "clone",
                     Config.CLONE_URL,
                     Config.CLONE_LOCATION
@@ -47,7 +47,7 @@ public class GitVCSExecutor implements VCSExecutor {
         try {
             // 执行 git pull 命令
             ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
-                    Config.GIT_COMMAND,
+                    Config.VCS_COMMAND,
                     "pull"
             }, null, new File(Config.CLONE_LOCATION)));
 

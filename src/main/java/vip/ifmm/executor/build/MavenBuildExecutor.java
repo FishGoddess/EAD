@@ -35,7 +35,7 @@ public class MavenBuildExecutor implements BuildExecutor {
         try {
             // 执行 mvn clean package 命令
             ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
-                    Config.MVN_COMMAND,
+                    Config.BUILD_COMMAND,
                     "clean",
                     "package",
                     "-Dmaven.test.skip=true"

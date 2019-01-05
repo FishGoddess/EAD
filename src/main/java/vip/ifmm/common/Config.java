@@ -47,10 +47,10 @@ public class Config {
     public static final String CLONE_LOCATION = getValueSafely("clone_location", "");
 
     // GIT 命令位置
-    public static final String GIT_COMMAND = getValueSafely("git_command", "git");
+    public static final String VCS_COMMAND = getValueSafely("vcs_command", "git");
 
     // MAVEN 命令位置
-    public static final String MVN_COMMAND = getValueSafely("mvn_command", "mvn");
+    public static final String BUILD_COMMAND = getValueSafely("build_command", "mvn");
 
     // 项目部署位置
     public static final String DEPLOY_LOCATION = getValueSafely("deploy_location", "");
