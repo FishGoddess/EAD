@@ -42,6 +42,8 @@ public class Environment {
         try {
             return Class.forName(className).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+
+            log.error(className + " 加载失败！使用默认加载类！", e);
             // 返回默认实例化对象
             return defaultObject;
         }

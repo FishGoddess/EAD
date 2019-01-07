@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         VCSExecutor git = Environment.getVCSExecutor();
-        //git.cloneProject();
+        git.cloneProject();
         git.updateProject();
 
         BuildExecutor mvn = Environment.getBuildExecutor();
