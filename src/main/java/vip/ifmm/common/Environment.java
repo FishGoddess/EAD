@@ -2,8 +2,12 @@ package vip.ifmm.common;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import vip.ifmm.executor.build.BuildExecutor;
+import vip.ifmm.executor.build.MavenBuildExecutor;
 import vip.ifmm.executor.deploy.DeployExecutor;
 import vip.ifmm.executor.deploy.UnixDeployExecutor;
+import vip.ifmm.executor.vcs.GitVCSExecutor;
+import vip.ifmm.executor.vcs.VCSExecutor;
 
 /**
  * 环境变量工具类
@@ -20,12 +24,26 @@ public class Environment {
 
     // 获得部署执行器
     public static DeployExecutor getDeployExecutor() {
+        return (DeployExecutor) getObjectSafely(Config.DEPLOY_EXECUTOR_CLASS, new UnixDeployExecutor());
+    }
+
+    // 获得版本控制工具执行器
+    public static VCSExecutor getVCSExecutor() {
+        return (VCSExecutor) getObjectSafely(Config.VCS_EXECUTOR_CLASS, new GitVCSExecutor());
+    }
+
+    // 获得项目构建工具执行器
+    public static BuildExecutor getBuildExecutor() {
+        return (BuildExecutor) getObjectSafely(Config.BUILD_EXECUTOR_CLASS, new MavenBuildExecutor());
+    }
+
+    // 优先加载 className 这个类，如果出现异常，则返回 defaultObject
+    private static Object getObjectSafely(String className, Object defaultObject) {
         try {
-            // 实例化一个部署实现类
-            return (DeployExecutor) Class.forName(Config.DEPLOY_EXECUTOR_CLASS).newInstance();
+            return Class.forName(className).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            // 使用默认的实现类
-            return new UnixDeployExecutor();
+            // 返回默认实例化对象
+            return defaultObject;
         }
     }
 }

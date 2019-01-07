@@ -1,7 +1,10 @@
 package vip.ifmm;
 
+import vip.ifmm.common.Environment;
+import vip.ifmm.executor.build.BuildExecutor;
 import vip.ifmm.executor.build.MavenBuildExecutor;
 import vip.ifmm.executor.vcs.GitVCSExecutor;
+import vip.ifmm.executor.vcs.VCSExecutor;
 
 /**
  * 主程序
@@ -13,11 +16,11 @@ import vip.ifmm.executor.vcs.GitVCSExecutor;
 public class Main {
 
     public static void main(String[] args) {
-        GitVCSExecutor git = new GitVCSExecutor();
+        VCSExecutor git = Environment.getVCSExecutor();
         //git.cloneProject();
         git.updateProject();
 
-        MavenBuildExecutor mvn = new MavenBuildExecutor();
+        BuildExecutor mvn = Environment.getBuildExecutor();
         mvn.packageProject();
         mvn.deployProject();
     }
