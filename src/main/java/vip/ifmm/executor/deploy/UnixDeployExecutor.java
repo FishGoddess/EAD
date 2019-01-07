@@ -21,19 +21,18 @@ public class UnixDeployExecutor implements DeployExecutor {
     @Override
     public boolean deploy(String projectRootDirectory, String projectDirectory, String deployLocation, String deployName) {
 
-        /*try {
+        try {
             ProcessExecutor.execute(Runtime.getRuntime().exec(new String[]{
                     "cp",
-                    projectDirectory,
-                    deployLocation + "\\" + deployName
+                    "-rf",
+                    projectDirectory + "/.",
+                    deployLocation + "/" + deployName
             }, null, new File(projectRootDirectory)));
 
             return true;
         } catch (InterruptedException | IOException e) {
             log.error("deploy 失败！deploy_location: [" + Config.DEPLOY_LOCATION + "]", e);
             return false;
-        }*/
-
-        return false;
+        }
     }
 }
