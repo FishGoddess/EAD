@@ -8,27 +8,26 @@
 <h1 style="text-align: center;margin-top: 50px;">EAD 执行报告</h1>
 <hr style="margin-bottom: 50px;"/>
 
-<div id="fromServerText" style="width: 80%;margin: 0 auto;"></div>
+<div id="fromServerText" style="width: 80%;margin: 0 auto 100px;"></div>
 
 <script>
 
     const fromServerText = document.getElementById("fromServerText");
     if (window.WebSocket) {
         // 支持 WebSocket
-        const socket = new WebSocket("ws://127.0.0.1:9091/ws");
+        const socket = new WebSocket("ws://" + location.hostname + ":9091/EAD_ws");
 
         // 当有消息来了
         socket.onmessage = (event) => {
-            fromServerText.value = fromServerText.value + "\n" + event.data;
+            fromServerText.innerHTML = fromServerText.innerHTML + "<h3>" + event.data + "</h3>";
+            scrollTo(0, document.body.offsetHeight);
         };
 
         socket.onopen = (event) => {
             fromServerText.value = "连接 EAD 成功！";
 
             // 发送更新指令
-            if (socket.readyState === WebSocket.OPEN) {
-                socket.send("update");
-            }
+            socket.send("update");
         };
 
         socket.onclose = (event) => {
