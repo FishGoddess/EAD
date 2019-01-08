@@ -63,7 +63,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<FullHttpReque
         // 转换成一个 String 对象
         StringBuilder sb = new StringBuilder();
         for (String line : lines) {
-            sb.append(line);
+            sb.append(line).append('\n');
         }
 
         return sb.toString();
