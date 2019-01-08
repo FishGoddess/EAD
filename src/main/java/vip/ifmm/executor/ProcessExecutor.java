@@ -2,6 +2,7 @@ package vip.ifmm.executor;
 
 import vip.ifmm.handler.DefaultStreamHandler;
 import vip.ifmm.handler.StreamHandlerWrapper;
+import vip.ifmm.handler.WebSocketStreamHandler;
 
 /**
  * 默认进程执行器
@@ -17,7 +18,7 @@ public final class ProcessExecutor {
     public static void execute(Process p) throws InterruptedException {
 
         // 处理程序数据
-        StreamHandlerWrapper streamHandlerWrapper = new StreamHandlerWrapper(new DefaultStreamHandler());
+        StreamHandlerWrapper streamHandlerWrapper = new StreamHandlerWrapper(new WebSocketStreamHandler());
         new Thread(() -> streamHandlerWrapper.handleInput(p.getInputStream())).start(); // 为了让下面的代码进行下去
         new Thread(() -> streamHandlerWrapper.handleInput(p.getErrorStream())).start(); // 为了让下面的代码进行下去
 

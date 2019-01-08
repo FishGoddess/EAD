@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>EAD 执行报告</title>
+</head>
+<body>
+
+<textarea id="fromClientText" name="msg" style="width: 400px; height: 200px;"></textarea>
+<input id="sendMsgBtn" type="button" value="发送数据">
+
+<h2>服务器响应：</h2>
+
+<textarea id="fromServerText" style="width: 400px; height: 200px;"></textarea>
+<input type="button" value="清空内容" onclick="document.getElementById('fromServerText').value = '';">
+
+<script>
+
+    if (window.WebSocket) {
+        // 支持 WebSocket
+        const socket = new WebSocket("ws://127.0.0.1:9091/ws");
+        const fromServerText = document.getElementById("fromServerText");
+
+        // 当有消息来了
+        socket.onmessage = (event) => {
+            console.log(event);
+            fromServerText.value = fromServerText.value + "\n" + event.data;
+        };
+
+        socket.onopen = (event) => {
+            fromServerText.value = "连接开启！";
+        };
+
+        socket.onclose = (event) => {
+            fromServerText.value = fromServerText.value + "\n连接关闭！";
+        };
+
+        /*socket.onerror = (event) => {
+            alert("发生错误！");
+        };*/
+
+        // 发送数据事件绑定
+        const fromClientText = document.getElementById("fromClientText");
+        document.getElementById("sendMsgBtn").onclick = () => {
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(fromClientText.value);
+                fromClientText.value = "";
+            }
+        };
+
+    } else {
+        alert("浏览器不支持 WebSocket！");
+    }
+</script>
+</body>
+</html>

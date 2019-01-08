@@ -37,6 +37,16 @@ public class Environment {
         return (BuildExecutor) getObjectSafely(Config.BUILD_EXECUTOR_CLASS, new MavenBuildExecutor());
     }
 
+    // 获得 WebSocket 端口
+    public static int getWebSocketPort() {
+        return parseInteger(Config.WEBSOCKET_PORT);
+    }
+
+    // 获得 http 端口
+    public static int getHttpPort() {
+        return parseInteger(Config.HTTP_PORT);
+    }
+
     // 优先加载 className 这个类，如果出现异常，则返回 defaultObject
     private static Object getObjectSafely(String className, Object defaultObject) {
         try {
@@ -46,6 +56,16 @@ public class Environment {
             log.error(className + " 加载失败！使用默认加载类！", e);
             // 返回默认实例化对象
             return defaultObject;
+        }
+    }
+
+    // 如果数字格式不对就会返回 -1
+    private static int parseInteger(String integer) {
+        try {
+            return Integer.valueOf(integer);
+        } catch (NumberFormatException e) {
+            log.error("数字格式不对！integer: " + integer, e);
+            return -1;
         }
     }
 }

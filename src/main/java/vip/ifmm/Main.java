@@ -5,6 +5,8 @@ import vip.ifmm.executor.build.BuildExecutor;
 import vip.ifmm.executor.build.MavenBuildExecutor;
 import vip.ifmm.executor.vcs.GitVCSExecutor;
 import vip.ifmm.executor.vcs.VCSExecutor;
+import vip.ifmm.net.NioServer;
+import vip.ifmm.net.websocket.WebSocketServerInitializer;
 
 /**
  * 主程序
@@ -20,25 +22,32 @@ public class Main {
     private static final BuildExecutor mvn = Environment.getBuildExecutor();
 
     // 初始化项目
-    private static final String INIT = "init";
+    public static final String INIT = "init";
 
     // 更新项目
-    private static final String UPDATE = "update";
+    public static final String UPDATE = "update";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        NioServer webSocketServer = new NioServer();
+        webSocketServer.open(Environment.getWebSocketPort(), new WebSocketServerInitializer());
 
         //init();
-        update();
+        //update();
+
+        webSocketServer.closeGracefully();
     }
 
     // 初始化项目
-    private static boolean init() {
+    // 该方法必须是同步而且强制锁整个对象
+    public synchronized static boolean init() {
         // 只有前一个步骤执行成功才继续执行
         return git.cloneProject() && mvn.packageProject() && mvn.deployProject();
     }
 
     // 更新项目
-    private static boolean update() {
+    // 该方法必须是同步而且强制锁整个对象
+    public static boolean update() {
         // 只有前一个步骤执行成功才继续执行
         return git.updateProject() && mvn.packageProject() && mvn.deployProject();
     }

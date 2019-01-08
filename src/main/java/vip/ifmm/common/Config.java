@@ -66,4 +66,10 @@ public class Config {
 
     // 项目构建工具执行器
     public static final String BUILD_EXECUTOR_CLASS = getValueSafely("build_executor_class", "vip.ifmm.executor.build.MavenBuildExecutor");
+
+    // http web 使用的端口
+    public static final String HTTP_PORT = getValueSafely("http_port", "9090");
+
+    // WebSocket 连接使用的端口
+    public static final String WEBSOCKET_PORT = getValueSafely("websocket_port", "9091");
 }
