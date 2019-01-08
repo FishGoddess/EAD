@@ -28,6 +28,16 @@ public class Main {
     // 更新项目
     public static final String UPDATE = "update";
 
+    private static volatile boolean running = false;
+
+    public synchronized static void setRunning(boolean isRunning) {
+        Main.running = isRunning;
+    }
+
+    public synchronized static boolean isRunning() {
+        return running;
+    }
+
     public static void main(String[] args) throws InterruptedException {
 
         // 初始化 websocket 服务器
@@ -57,8 +67,6 @@ public class Main {
             webSocketServer.closeGracefully();
         }).start();
     }
-
-
 
     // 初始化项目
     // 该方法必须是同步而且强制锁整个对象

@@ -24,33 +24,35 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
     // 将所有已连接上来的通道都保存起来
     private static final ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
-    // 是否是第一次运行
-    private boolean firstStart = true;
-
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
 
         // 只有等一个用户完全执行完才能执行下一个指令
-        if (firstStart || exited) {
+        if (!Main.isRunning()) {
 
             // 判断命令执行
             switch (msg.text()) {
                 case Main.INIT:
-                    restart(); // 重新开始
-                    firstStart = false;
 
                     // 这里要使用新线程进行处理，否则就会阻塞这个方法
-                    new Thread(()->{
-                        sendToAll("项目是否下载成功：" + Main.init());
+                    new Thread(() -> {
+                        if (!Main.isRunning()) {
+                            Main.setRunning(true);
+                            sendToAll("项目是否下载成功：" + Main.init());
+                            Main.setRunning(false);
+                        }
                     }).start();
                     break;
                 case Main.UPDATE:
-                    restart(); // 重新开始
 
                     // 这里要使用新线程进行处理，否则就会阻塞这个方法
-                    new Thread(()->{
-                        sendToAll("开始更新！！");
-                        sendToAll("项目是否更新成功：" + Main.update());
+                    new Thread(() -> {
+                        if (!Main.isRunning()) {
+                            Main.setRunning(true);
+                            sendToAll("开始更新！！");
+                            sendToAll("项目是否更新成功：" + Main.update());
+                            Main.setRunning(false);
+                        }
                     }).start();
                     break;
             }
@@ -79,11 +81,6 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
     // 是否终止程序
     private volatile boolean exited = false;
 
-    // 必须是同步，强行让使用者等待！
-    private synchronized void restart() {
-        this.exited = false;
-    }
-
     @Override
     public void close() {
         exited = true;
@@ -106,6 +103,6 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
 
     // 向所有连接上来的用户发送消息
     private static void sendToAll(String line) {
-        ChannelGroupFuture f = channels.writeAndFlush(new TextWebSocketFrame(line));
+        channels.writeAndFlush(new TextWebSocketFrame(line));
     }
 }
