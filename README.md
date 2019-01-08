@@ -12,13 +12,15 @@ www.ifmm.vip
 
 
 #### 安装教程
+1. 配置
+config.properties
 
-1. xxxx
-2. xxxx
-3. xxxx
+2. 运行命令启动服务即可：
+java vip.ifmm.Main
 
 #### 使用说明
+1. 配置
+config.properties
 
-1. xxxx
-2. xxxx
-3. xxxx
+2. 运行命令启动服务即可：
+java vip.ifmm.Main
