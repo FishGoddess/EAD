@@ -64,10 +64,10 @@ public class StreamHandlerWrapper {
                 if (line != null) {
                     streamHandler.handleReadString(line);
                 } else {
-                    Thread.sleep(500);
+                    streamHandler.handleNullString();
                 }
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             log.error("程序已经关闭...", e);
         } finally {
             closeInput(reader);

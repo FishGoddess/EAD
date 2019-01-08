@@ -99,6 +99,11 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
         sendToAll(line);
     }
 
+    @Override
+    public void handleNullString() throws Exception {
+        Thread.sleep(500);
+    }
+
     // 向所有连接上来的用户发送消息
     private static void sendToAll(String line) {
         ChannelGroupFuture f = channels.writeAndFlush(new TextWebSocketFrame(line));

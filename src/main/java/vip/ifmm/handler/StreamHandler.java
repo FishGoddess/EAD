@@ -21,4 +21,7 @@ public interface StreamHandler {
 
     // 处理输出流的字符串
     default void handleWriteString(BufferedWriter bw, String line) throws IOException {}
+
+    // 处理 null 字符串
+    default void handleNullString() throws Exception {}
 }

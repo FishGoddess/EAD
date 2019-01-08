@@ -6,6 +6,7 @@ import vip.ifmm.executor.build.MavenBuildExecutor;
 import vip.ifmm.executor.vcs.GitVCSExecutor;
 import vip.ifmm.executor.vcs.VCSExecutor;
 import vip.ifmm.net.NioServer;
+import vip.ifmm.net.http.HttpServerInitializer;
 import vip.ifmm.net.websocket.WebSocketServerInitializer;
 
 /**
@@ -36,7 +37,10 @@ public class Main {
             Thread.sleep(100); // 等待 100 ms 看看服务器是否准备完毕
         }
 
-
+        // 初始化 http 服务器
+        NioServer httpServer = new NioServer();
+        httpServer.open(Environment.getHttpPort(), new HttpServerInitializer());
+        httpServer.closeGracefully();
     }
 
     // 初始化 websocket 服务器
