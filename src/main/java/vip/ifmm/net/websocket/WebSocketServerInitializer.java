@@ -22,7 +22,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 
         ch.pipeline().addLast(new HttpServerCodec())
                 .addLast(new ChunkedWriteHandler())
-                .addLast(new HttpObjectAggregator(16))
+                .addLast(new HttpObjectAggregator(8192))
                 .addLast(new WebSocketServerProtocolHandler("/ws"))
                 .addLast(new WebSocketStreamHandler());
     }

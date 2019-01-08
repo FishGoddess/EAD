@@ -26,6 +26,13 @@ public class NioServer {
     private EventLoopGroup bossGroup = new NioEventLoopGroup();
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
 
+    // 是否准备好了
+    private volatile boolean ready = false;
+
+    public synchronized boolean isReady() {
+        return ready;
+    }
+
     public void open(int port, ChannelHandler childHandler) throws InterruptedException {
 
         ServerBootstrap server = new ServerBootstrap();
@@ -37,6 +44,11 @@ public class NioServer {
 
         // 记录日志
         log.info("NioServer run on port: " + port);
+
+        // 服务器准备好了
+        synchronized (this) {
+            ready = true;
+        }
 
         f.channel().closeFuture().sync();
     }

@@ -1,16 +1,15 @@
 package vip.ifmm.handler;
 
-
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.ChannelGroupFuture;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import vip.ifmm.Main;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 /**
  * WebSocket 服务器处理器
@@ -39,16 +38,23 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
                 case Main.INIT:
                     restart(); // 重新开始
                     firstStart = false;
-                    sendToAll("项目是否下载成功：" + Main.init());
+
+                    // 这里要使用新线程进行处理，否则就会阻塞这个方法
+                    new Thread(()->{
+                        sendToAll("项目是否下载成功：" + Main.init());
+                    }).start();
                     break;
                 case Main.UPDATE:
                     restart(); // 重新开始
-                    sendToAll("项目是否更新成功：" + Main.update());
+
+                    // 这里要使用新线程进行处理，否则就会阻塞这个方法
+                    new Thread(()->{
+                        sendToAll("开始更新！！");
+                        sendToAll("项目是否更新成功：" + Main.update());
+                    }).start();
                     break;
             }
         }
-
-        //ctx.writeAndFlush(new TextWebSocketFrame(LocalDateTime.now().toString()));
     }
 
     @Override
@@ -95,9 +101,6 @@ public class WebSocketStreamHandler extends SimpleChannelInboundHandler<TextWebS
 
     // 向所有连接上来的用户发送消息
     private static void sendToAll(String line) {
-        System.out.println(line);
-        channels.forEach(channel -> {
-            channel.writeAndFlush(new TextWebSocketFrame(line + "\r\n"));
-        });
+        ChannelGroupFuture f = channels.writeAndFlush(new TextWebSocketFrame(line));
     }
 }

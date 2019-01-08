@@ -5,30 +5,30 @@
     <title>EAD 执行报告</title>
 </head>
 <body>
+<h1 style="text-align: center;margin-top: 50px;">EAD 执行报告</h1>
+<hr style="margin-bottom: 50px;"/>
 
-<textarea id="fromClientText" name="msg" style="width: 400px; height: 200px;"></textarea>
-<input id="sendMsgBtn" type="button" value="发送数据">
-
-<h2>服务器响应：</h2>
-
-<textarea id="fromServerText" style="width: 400px; height: 200px;"></textarea>
-<input type="button" value="清空内容" onclick="document.getElementById('fromServerText').value = '';">
+<div id="fromServerText" style="width: 80%;margin: 0 auto;"></div>
 
 <script>
 
+    const fromServerText = document.getElementById("fromServerText");
     if (window.WebSocket) {
         // 支持 WebSocket
         const socket = new WebSocket("ws://127.0.0.1:9091/ws");
-        const fromServerText = document.getElementById("fromServerText");
 
         // 当有消息来了
         socket.onmessage = (event) => {
-            console.log(event);
             fromServerText.value = fromServerText.value + "\n" + event.data;
         };
 
         socket.onopen = (event) => {
-            fromServerText.value = "连接开启！";
+            fromServerText.value = "连接 EAD 成功！";
+
+            // 发送更新指令
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send("update");
+            }
         };
 
         socket.onclose = (event) => {
@@ -39,17 +39,8 @@
             alert("发生错误！");
         };*/
 
-        // 发送数据事件绑定
-        const fromClientText = document.getElementById("fromClientText");
-        document.getElementById("sendMsgBtn").onclick = () => {
-            if (socket.readyState === WebSocket.OPEN) {
-                socket.send(fromClientText.value);
-                fromClientText.value = "";
-            }
-        };
-
     } else {
-        alert("浏览器不支持 WebSocket！");
+        fromServerText.innerHTML = "<h3 style='text-align: center;'>浏览器不支持查看结果！但 EAD 正在更新并重新部署项目！</h3>";
     }
 </script>
 </body>
