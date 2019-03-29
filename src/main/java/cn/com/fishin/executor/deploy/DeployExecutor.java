@@ -1,4 +1,4 @@
-package vip.ifmm.executor.deploy;
+package cn.com.fishin.executor.deploy;
 
 /**
  * 部署处理器接口

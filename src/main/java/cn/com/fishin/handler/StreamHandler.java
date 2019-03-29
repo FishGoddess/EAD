@@ -1,4 +1,4 @@
-package vip.ifmm.handler;
+package cn.com.fishin.handler;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

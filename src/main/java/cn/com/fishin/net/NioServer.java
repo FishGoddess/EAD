@@ -1,4 +1,4 @@
-package vip.ifmm.net;
+package cn.com.fishin.net;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,8 +8,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import vip.ifmm.common.Environment;
-import vip.ifmm.net.websocket.WebSocketServerInitializer;
 
 /**
  * WebSocket 服务器

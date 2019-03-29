@@ -1,11 +1,10 @@
-package vip.ifmm.executor.build;
+package cn.com.fishin.executor.build;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import vip.ifmm.common.Config;
-import vip.ifmm.common.Environment;
-import vip.ifmm.executor.ProcessExecutor;
-import vip.ifmm.executor.deploy.DeployExecutor;
+import cn.com.fishin.common.Config;
+import cn.com.fishin.common.Environment;
+import cn.com.fishin.executor.ProcessExecutor;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,8 +1,7 @@
-package vip.ifmm.executor;
+package cn.com.fishin.executor;
 
-import vip.ifmm.handler.DefaultStreamHandler;
-import vip.ifmm.handler.StreamHandlerWrapper;
-import vip.ifmm.handler.WebSocketStreamHandler;
+import cn.com.fishin.handler.StreamHandlerWrapper;
+import cn.com.fishin.handler.WebSocketStreamHandler;
 
 /**
  * 默认进程执行器

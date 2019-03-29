@@ -1,8 +1,8 @@
-package vip.ifmm.handler;
+package cn.com.fishin.handler;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import vip.ifmm.common.Config;
+import cn.com.fishin.common.Config;
 
 import java.io.*;
 

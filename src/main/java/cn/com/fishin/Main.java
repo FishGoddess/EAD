@@ -1,13 +1,11 @@
-package vip.ifmm;
+package cn.com.fishin;
 
-import vip.ifmm.common.Environment;
-import vip.ifmm.executor.build.BuildExecutor;
-import vip.ifmm.executor.build.MavenBuildExecutor;
-import vip.ifmm.executor.vcs.GitVCSExecutor;
-import vip.ifmm.executor.vcs.VCSExecutor;
-import vip.ifmm.net.NioServer;
-import vip.ifmm.net.http.HttpServerInitializer;
-import vip.ifmm.net.websocket.WebSocketServerInitializer;
+import cn.com.fishin.common.Environment;
+import cn.com.fishin.executor.build.BuildExecutor;
+import cn.com.fishin.executor.vcs.VCSExecutor;
+import cn.com.fishin.net.NioServer;
+import cn.com.fishin.net.http.HttpServerInitializer;
+import cn.com.fishin.net.websocket.WebSocketServerInitializer;
 
 /**
  * 主程序

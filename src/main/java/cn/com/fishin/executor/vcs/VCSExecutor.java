@@ -1,4 +1,4 @@
-package vip.ifmm.executor.vcs;
+package cn.com.fishin.executor.vcs;
 
 /**
  * 版本控制工具执行器接口

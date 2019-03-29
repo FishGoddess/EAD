@@ -22,11 +22,11 @@ www.fishin.com.cn
 config.properties
 
 2. 运行命令启动服务即可：
-java vip.ifmm.Main
+java cn.com.fishin.Main
 
 #### 使用说明
 1. 配置
 config.properties
 
 2. 运行命令启动服务即可：
-java vip.ifmm.Main
+java cn.com.fishin.Main

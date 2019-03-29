@@ -1,13 +1,12 @@
-package vip.ifmm.handler;
+package cn.com.fishin.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.ChannelGroupFuture;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import vip.ifmm.Main;
+import cn.com.fishin.Main;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package vip.ifmm.handler;
+package cn.com.fishin.handler;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
@@ -7,7 +7,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 

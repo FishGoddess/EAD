@@ -1,11 +1,9 @@
-package vip.ifmm.executor.vcs;
+package cn.com.fishin.executor.vcs;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import vip.ifmm.common.Config;
-import vip.ifmm.executor.ProcessExecutor;
-import vip.ifmm.handler.DefaultStreamHandler;
-import vip.ifmm.handler.StreamHandlerWrapper;
+import cn.com.fishin.common.Config;
+import cn.com.fishin.executor.ProcessExecutor;
 
 import java.io.File;
 import java.io.IOException;

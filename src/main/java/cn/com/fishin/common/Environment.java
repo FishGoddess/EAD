@@ -1,13 +1,13 @@
-package vip.ifmm.common;
+package cn.com.fishin.common;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import vip.ifmm.executor.build.BuildExecutor;
-import vip.ifmm.executor.build.MavenBuildExecutor;
-import vip.ifmm.executor.deploy.DeployExecutor;
-import vip.ifmm.executor.deploy.UnixDeployExecutor;
-import vip.ifmm.executor.vcs.GitVCSExecutor;
-import vip.ifmm.executor.vcs.VCSExecutor;
+import cn.com.fishin.executor.build.BuildExecutor;
+import cn.com.fishin.executor.build.MavenBuildExecutor;
+import cn.com.fishin.executor.deploy.DeployExecutor;
+import cn.com.fishin.executor.deploy.UnixDeployExecutor;
+import cn.com.fishin.executor.vcs.GitVCSExecutor;
+import cn.com.fishin.executor.vcs.VCSExecutor;
 
 /**
  * 环境变量工具类

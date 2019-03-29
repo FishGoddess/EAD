@@ -1,10 +1,10 @@
-package vip.ifmm.net.http;
+package cn.com.fishin.net.http;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import vip.ifmm.handler.HttpServerHandler;
+import cn.com.fishin.handler.HttpServerHandler;
 
 /**
  * 服务器初始化器
