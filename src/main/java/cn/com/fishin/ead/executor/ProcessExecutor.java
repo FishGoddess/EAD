@@ -1,7 +1,7 @@
-package cn.com.fishin.executor;
+package cn.com.fishin.ead.executor;
 
-import cn.com.fishin.handler.StreamHandlerWrapper;
-import cn.com.fishin.handler.WebSocketStreamHandler;
+import cn.com.fishin.ead.handler.StreamHandlerWrapper;
+import cn.com.fishin.ead.handler.WebSocketStreamHandler;
 
 /**
  * 默认进程执行器

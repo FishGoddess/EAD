@@ -1,4 +1,4 @@
-package cn.com.fishin.common;
+package cn.com.fishin.ead.common;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -58,13 +58,13 @@ public class Config {
     public static final String DEPLOY_NAME = getValueSafely("deploy_name", "");
 
     // 部署实现类名称
-    public static final String DEPLOY_EXECUTOR_CLASS = getValueSafely("deploy_executor_class", "cn.com.fishin.executor.deploy.UnixDeployExecutor");
+    public static final String DEPLOY_EXECUTOR_CLASS = getValueSafely("deploy_executor_class", "cn.com.fishin.ead.executor.deploy.UnixDeployExecutor");
 
     // 版本控制工具执行器
-    public static final String VCS_EXECUTOR_CLASS = getValueSafely("vcs_executor_class", "cn.com.fishin.executor.vcs.GitVCSExecutor");
+    public static final String VCS_EXECUTOR_CLASS = getValueSafely("vcs_executor_class", "cn.com.fishin.ead.executor.vcs.GitVCSExecutor");
 
     // 项目构建工具执行器
-    public static final String BUILD_EXECUTOR_CLASS = getValueSafely("build_executor_class", "cn.com.fishin.executor.build.MavenBuildExecutor");
+    public static final String BUILD_EXECUTOR_CLASS = getValueSafely("build_executor_class", "cn.com.fishin.ead.executor.build.MavenBuildExecutor");
 
     // http web 使用的端口
     public static final String HTTP_PORT = getValueSafely("http_port", "9090");

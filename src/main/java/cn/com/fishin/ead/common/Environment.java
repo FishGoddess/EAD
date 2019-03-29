@@ -1,13 +1,13 @@
-package cn.com.fishin.common;
+package cn.com.fishin.ead.common;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import cn.com.fishin.executor.build.BuildExecutor;
-import cn.com.fishin.executor.build.MavenBuildExecutor;
-import cn.com.fishin.executor.deploy.DeployExecutor;
-import cn.com.fishin.executor.deploy.UnixDeployExecutor;
-import cn.com.fishin.executor.vcs.GitVCSExecutor;
-import cn.com.fishin.executor.vcs.VCSExecutor;
+import cn.com.fishin.ead.executor.build.BuildExecutor;
+import cn.com.fishin.ead.executor.build.MavenBuildExecutor;
+import cn.com.fishin.ead.executor.deploy.DeployExecutor;
+import cn.com.fishin.ead.executor.deploy.UnixDeployExecutor;
+import cn.com.fishin.ead.executor.vcs.GitVCSExecutor;
+import cn.com.fishin.ead.executor.vcs.VCSExecutor;
 
 /**
  * 环境变量工具类

@@ -1,4 +1,4 @@
-package cn.com.fishin.handler;
+package cn.com.fishin.ead.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -6,7 +6,7 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import cn.com.fishin.Main;
+import cn.com.fishin.ead.Main;
 
 import java.io.IOException;
 

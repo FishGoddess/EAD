@@ -1,11 +1,11 @@
-package cn.com.fishin;
+package cn.com.fishin.ead;
 
-import cn.com.fishin.common.Environment;
-import cn.com.fishin.executor.build.BuildExecutor;
-import cn.com.fishin.executor.vcs.VCSExecutor;
-import cn.com.fishin.net.NioServer;
-import cn.com.fishin.net.http.HttpServerInitializer;
-import cn.com.fishin.net.websocket.WebSocketServerInitializer;
+import cn.com.fishin.ead.common.Environment;
+import cn.com.fishin.ead.executor.build.BuildExecutor;
+import cn.com.fishin.ead.executor.vcs.VCSExecutor;
+import cn.com.fishin.ead.net.NioServer;
+import cn.com.fishin.ead.net.http.HttpServerInitializer;
+import cn.com.fishin.ead.net.websocket.WebSocketServerInitializer;
 
 /**
  * 主程序

@@ -1,4 +1,4 @@
-package cn.com.fishin.net.websocket;
+package cn.com.fishin.ead.net.websocket;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import cn.com.fishin.handler.WebSocketStreamHandler;
+import cn.com.fishin.ead.handler.WebSocketStreamHandler;
 
 /**
  * WebSocket 服务器初始化器

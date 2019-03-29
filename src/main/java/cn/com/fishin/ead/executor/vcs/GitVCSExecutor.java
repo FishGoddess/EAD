@@ -1,9 +1,9 @@
-package cn.com.fishin.executor.vcs;
+package cn.com.fishin.ead.executor.vcs;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import cn.com.fishin.common.Config;
-import cn.com.fishin.executor.ProcessExecutor;
+import cn.com.fishin.ead.common.Config;
+import cn.com.fishin.ead.executor.ProcessExecutor;
 
 import java.io.File;
 import java.io.IOException;

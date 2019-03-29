@@ -1,8 +1,8 @@
-package cn.com.fishin.handler;
+package cn.com.fishin.ead.handler;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import cn.com.fishin.common.Config;
+import cn.com.fishin.ead.common.Config;
 
 import java.io.*;
 

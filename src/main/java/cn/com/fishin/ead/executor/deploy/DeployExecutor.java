@@ -1,4 +1,4 @@
-package cn.com.fishin.executor.deploy;
+package cn.com.fishin.ead.executor.deploy;
 
 /**
  * 部署处理器接口

@@ -1,4 +1,4 @@
-package cn.com.fishin.net;
+package cn.com.fishin.ead.net;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
