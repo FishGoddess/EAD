@@ -5,7 +5,7 @@ EAD (Easy Automatically Deployment)
 
 简单自动化部署工具
 
-www.fishin.fun
+www.fishin.com.cn
 
 #### 软件架构
 目前实现了将 Git 上的项目自动部署到 Web 容器。
