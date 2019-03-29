@@ -30,3 +30,7 @@ config.properties
 
 2. 运行命令启动服务即可：
 java cn.com.fishin.Main
+
+3. 打开浏览器：访问 ip:9090 （你的服务器 ip 加设置的端口，默认端口为 9090）
+![Image text](./images/1.png)
+
